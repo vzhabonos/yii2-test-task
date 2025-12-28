@@ -1,9 +1,10 @@
 <?php
 
-use yii\gii\Module as YiiGiiModule;
+use yii\bootstrap5\LinkPager as Bootstrap5LinkPager;
 use yii\debug\Module as YiiDebugModule;
 use yii\log\FileTarget;
 use yii\caching\FileCache;
+use yii\widgets\LinkPager;
 
 $params = require __DIR__ . '/params.php';
 $elastic = require __DIR__ . '/elastic.php';
@@ -19,6 +20,7 @@ $config = [
         '@npm'   => '@vendor/npm-asset',
     ],
     'components' => [
+        'user' => null,
         'cache' => [
             'class' => FileCache::class,
         ],
@@ -34,6 +36,11 @@ $config = [
         'mongodb' => $mongodb,
         'elasticsearch' => $elastic,
     ],
+    'container' => [
+        'definitions' => [
+            LinkPager::class => Bootstrap5LinkPager::class,
+        ],
+    ],
     'params' => $params,
 ];
 
@@ -42,15 +49,7 @@ if (YII_ENV_DEV) {
     $config['bootstrap'][] = 'debug';
     $config['modules']['debug'] = [
         'class' => YiiDebugModule::class,
-        // uncomment the following to add your IP if you are not connecting from localhost.
-        //'allowedIPs' => ['127.0.0.1', '::1'],
-    ];
-
-    $config['bootstrap'][] = 'gii';
-    $config['modules']['gii'] = [
-        'class' => YiiGiiModule::class,
-        // uncomment the following to add your IP if you are not connecting from localhost.
-        //'allowedIPs' => ['127.0.0.1', '::1'],
+        'allowedIPs' => ['*.*.*.*'],
     ];
 }
 

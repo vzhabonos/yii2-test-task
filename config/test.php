@@ -1,5 +1,7 @@
 <?php
 
+$commonConfig = require(__DIR__ . '/common.php');
+
 /**
  * Application configuration shared by all test types
  */
@@ -25,7 +27,7 @@ $config = [
     ]
 ];
 
-return \yii\helpers\ArrayHelper::merge([
-    require __DIR__ . '/common.php',
+return yii\helpers\ArrayHelper::merge(
+    $commonConfig,
     $config,
-]);
+);

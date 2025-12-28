@@ -13,14 +13,15 @@
  */
 class Yii {
     /**
-     * @var \yii\web\Application|\yii\console\Application|__Application
+     * @var yii\web\Application|yii\console\Application|__Application
      */
     public static $app;
 }
 
 /**
  * @property yii\rbac\DbManager $authManager
- *
+ * @property yii\mongodb\Connection $mongodb
+ * @property yii\elasticsearch\Connection $elasticsearch
  */
 class __Application {
 }

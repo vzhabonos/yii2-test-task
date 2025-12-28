@@ -1,9 +1,11 @@
 <?php
+require __DIR__ . '/../vendor/autoload.php';
 
-// NOTE: Make sure this file is not accessible when deployed to production
-if (!in_array(@$_SERVER['REMOTE_ADDR'], ['127.0.0.1', '::1'])) {
-    die('You are not allowed to access this file.');
-}
+$dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__), ['.env', '.env.test']);
+$dotenv->safeLoad();
+
+defined('YII_DEBUG') or define('YII_DEBUG', (bool) $_ENV['APP_DEBUG']);
+defined('YII_ENV') or define('YII_ENV', $_ENV['APP_ENV']);
 
 defined('YII_DEBUG') or define('YII_DEBUG', true);
 defined('YII_ENV') or define('YII_ENV', 'test');
