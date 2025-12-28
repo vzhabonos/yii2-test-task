@@ -82,7 +82,6 @@ class SiteController extends Controller
                 'pagination' => ['pageSize' => 50],
                 'sort' => [
                     'attributes' => ['region', 'product_name', 'quantity'],
-                    'defaultOrder' => ['region' => SORT_ASC],
                 ],
             ])
         ]);
