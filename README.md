@@ -31,4 +31,4 @@ docker compose exec app bash
 ```shell
 php yii migrate-mongodb
 ```
-7App could be accessed using this link (if default `APP_CONTAINER_EXTERNAL_PORT` wasn't changed): http://127.0.0.1:8080
+7. App could be accessed using this link (if default `APP_CONTAINER_EXTERNAL_PORT` wasn't changed): http://127.0.0.1:8080
